@@ -36,7 +36,6 @@ export async function populate() {
         );
         // eslint-disable-next-line no-console
         console.log(`tipo_alerta: ${tipo_alerta}\n`);
-        console.log(res)
       }
     } catch (error) {
       // eslint-disable-next-line no-console
