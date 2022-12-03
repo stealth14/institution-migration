@@ -12,7 +12,7 @@ export async function populate() {
     port: Number(process.env.PGPORT),
   });
   const client = await pool.connect();
-  const text = 'SELECT * FROM alerts';
+  const text = 'SELECT * FROM seguimiento_revit';
 
   const cursor = client.query(new Cursor(text));
 
@@ -27,12 +27,12 @@ export async function populate() {
 
       for (const alert of rows) {
         //get instcode_res_id
-        const { code, institution } = alert;
+        const { tipo_alerta, institucion_id } = alert;
 
         const res = await pool.query(
           `UPDATE follow_alerts
-            SET instcode_res_id = '${institution}'
-            WHERE alert_code = '${code}'`,
+            SET instcode_res_id = '${institucion_id}'
+            WHERE alert_code = '${tipo_alerta}'`,
         );
         // eslint-disable-next-line no-console
         console.log(res);
