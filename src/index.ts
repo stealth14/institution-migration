@@ -19,7 +19,7 @@ export async function populate() {
   cursor.read(100, async (err, rows) => {
     const addColumnSentence = `
     ALTER TABLE follow_alerts
-    ADD instcode_res_id varchar(8);
+    ADD COLUMN IF NOT EXISTS instcode_res_id varchar(8);
     `;
 
     try {
